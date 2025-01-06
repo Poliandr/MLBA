@@ -1,6 +1,6 @@
 FROM python:3.9
-WORKDIR /usr/src/app
-COPY ./src/ ./
+WORKDIR /app
+COPY ./src/ ./src/
 COPY ./requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "./model.py" ]
+CMD [ "python", "./src/model.py" ]

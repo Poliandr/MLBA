@@ -37,12 +37,16 @@ while True:
         }
 
         # Публикуем сообщения
-        channel.basic_publish(exchange='',
-                            routing_key='y_true',
-                            body=json.dumps(message_y_true))
-        channel.basic_publish(exchange='',
-                            routing_key='features',
-                            body=json.dumps(message_features))
+        channel.basic_publish(
+            exchange='',
+            routing_key='y_true',
+            body=json.dumps(message_y_true)
+        )
+        channel.basic_publish(
+            exchange='',
+            routing_key='features',
+            body=json.dumps(message_features)
+        )
 
         print(f"Отправлено в y_true: {message_y_true}")
         print(f"Отправлено в features: {message_features}")
@@ -52,4 +56,4 @@ while True:
 
     except Exception as e:
         print(f"Ошибка при отправке сообщений: {e}")
-        time.sleep(5)
+        time.sleep(10)

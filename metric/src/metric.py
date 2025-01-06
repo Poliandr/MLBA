@@ -52,8 +52,16 @@ def callback_y_pred(ch, method, properties, body):
     messages[message_id]['y_pred'] = y_pred
     check_and_log(message_id)
 
-channel.basic_consume(queue='y_true', on_message_callback=callback_y_true, auto_ack=True)
-channel.basic_consume(queue='y_pred', on_message_callback=callback_y_pred, auto_ack=True)
+channel.basic_consume(
+    queue='y_true',
+    on_message_callback=callback_y_true,
+    auto_ack=True
+)
+channel.basic_consume(
+    queue='y_pred',
+    on_message_callback=callback_y_pred,
+    auto_ack=True
+)
 
 print("Сервис metric запущен, ожидание сообщений...")
 channel.start_consuming()
